@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- membership.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerGym - Choose Your Path</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+
+    <header>
+        <a href="index.html#home" class="logo">PowerGym</a>
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#trainers">Trainers</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="index.html#pricing" class="active">Pricing</a></li>
+                <li><a href="index.html#equipment">Equipment</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="nav-controls">
+            <button id="theme-toggle" title="Toggle Theme">☀️</button>
+            <button class="hamburger" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-section" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2>Complete Your Membership</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.8;">You're one step away from joining the most elite gym in the city.</p>
+            
+            <div style="background: var(--card-bg); padding: 3rem; border-radius: 15px; border: 1px solid var(--border);">
+                <form id="membership-form" style="display: flex; flex-direction: column; gap: 1.5rem; text-align: left;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Plan</label>
+                        <select style="padding: 0.8rem; border-radius: 5px; background: var(--bg); color: var(--text); border: 1px solid var(--border);">
+                            <option>Basic - $29/mo</option>
+                            <option selected>Standard - $49/mo</option>
+                            <option>Premium - $89/mo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Initialize Enrollment</button>
+                </form>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <p>⚡ Instant Access | 🔐 Secure Checkout | ❌ Cancel Anytime</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 PowerGym. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
