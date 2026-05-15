@@ -85,6 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Shop Functionality
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const productName = button.closest('.product-card').querySelector('h3').textContent;
+            alert(`${productName} added to cart!`);
+        });
+    });
+
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', () => {
@@ -92,4 +100,49 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('light-mode', !isDark);
         themeToggle.textContent = isDark ? '☀️' : '🌙';
     });
+
+    // --- Dynamic Effects ---
+    
+    // Scroll Reveal Observer
+    const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // If it's a section with stats, trigger stats logic
+                if (entry.target.id === 'home') {
+                    animateStats();
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, revealOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
+
+    // Stats Animation Logic
+    function animateStats() {
+        const stats = document.querySelectorAll('.stat-number');
+        stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps approx
+            let current = 0;
+
+            const updateCount = () => {
+                if (current < target) {
+                    current += increment;
+                    stat.textContent = Math.ceil(current).toLocaleString() + (target > 100 ? "+" : "");
+                    requestAnimationFrame(updateCount);
+                } else {
+                    stat.textContent = target.toLocaleString() + (target > 100 ? "+" : "");
+                }
+            };
+            updateCount();
+        });
+    }
 });
